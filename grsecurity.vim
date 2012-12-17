@@ -1,6 +1,6 @@
 " Vim syntax file
 " Maintainer: 	Jochen Bartl <jochen.bartl@gmail.com>
-" URL: 		http://verbosemo.de/~lobo/files/grsecurity.vim
+" URL: 		https://github.com/verbosemode/grsecurity.vim
 " Last Change: 	2008-12-13
 " Version: 	0.1
 " Contributions: Corey Henderson
