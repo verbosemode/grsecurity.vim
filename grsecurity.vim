@@ -1,8 +1,9 @@
 " Vim syntax file
 " Maintainer: 	Jochen Bartl <jochen.bartl@gmail.com>
 " URL: 		http://verbosemo.de/~lobo/files/grsecurity.vim
-" Last Change: 	2008-12-10
+" Last Change: 	2008-12-13
 " Version: 	0.1
+" Contributions: Corey Henderson
 
 if version < 600
   syntax clear
@@ -21,9 +22,14 @@ syn keyword grsecGroupTrans	group_transition_allow
 syn keyword grsecUserTrans	user_transition_allow
 syn keyword grsecSocketType	stream dgram
 
-syn keyword grsecCap		CAP_ALL CAP_CHOWN CAP_FSETID CAP_SETGID CAP_SETUID CAP_SYS_TTY_CONFIG
-syn keyword grsecCap		CAP_FOWNER CAP_SYS_CHROOT CAP_DAC_OVERRIDE CAP_SYS_RESOURCE CAP_IPC_LOCK
-syn keyword grsecCap 		CAP_KILL CAP_NET_ADMIN
+syn keyword grsecLinuxCap 	CAP_CHOWN CAP_DAC_OVERRIDE CAP_DAC_READ_SEARCH CAP_FOWNER CAP_FSETID CAP_KILL CAP_SETGID
+syn keyword grsecLinuxCap 	CAP_SETUID CAP_SETPCAP CAP_LINUX_IMMUTABLE CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_ADMIN
+syn keyword grsecLinuxCap 	CAP_NET_RAW CAP_IPC_LOCK CAP_IPC_OWNER CAP_SYS_MODULE CAP_SYS_RAWIO CAP_SYS_CHROOT CAP_SYS_PTRACE
+syn keyword grsecLinuxCap 	CAP_SYS_PACCT CAP_SYS_ADMIN CAP_SYS_BOOT CAP_SYS_NICE CAP_SYS_RESOURCE CAP_SYS_TIME
+syn keyword grsecLinuxCap 	CAP_SYS_TTY_CONFIG CAP_MKNOD CAP_LEASE CAP_AUDIT_WRITE CAP_AUDIT_CONTROL CAP_SETFCAP
+syn keyword grsecLinuxCap 	CAP_MAC_OVERRIDE CAP_MAC_ADMIN CAP_ALL
+
+syn keyword grsecPaxFlags 	PAX_EMUTRAMP PAX_MPROTECT PAX_PAGEEXEC PAX_RANDMMAP PAX_SEGMEXEC
 
 syn match grsecObjFlags		/\s[acdhilmprstwx]*$/
 syn match grsecRoleFlags	/\s[suAG]*$/
@@ -35,7 +41,8 @@ syn match grsecNM		/\/\d\+/
 
 syn region grsecSubject		start=/{/ end=/}/ transparent fold contains=ALLBUT,grsecRole,grsecStatement,grsecSubject
 
-hi def link grsecCap		Type
+hi def link grsecLinuxCap	Type
+hi def link grsecPaxFlags	Type
 hi def link grsecComment	Comment
 hi def link grsecDis		Constant
 hi def link grsecIPv4		Type
